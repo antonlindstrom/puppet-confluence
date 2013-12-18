@@ -1,7 +1,5 @@
 # Confluence
 
-[![Build Status](https://travis-ci.org/antonlindstrom/puppet-confluence.png?branch=master)](https://travis-ci.org/antonlindstrom/puppet-confluence)
-
 Puppet module for [Atlassian Confluence](https://www.atlassian.com/software/confluence).
 
 Installs a basic Confluence standalone installation in `/opt` and starts it.
