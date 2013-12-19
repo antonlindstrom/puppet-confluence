@@ -1,0 +1,78 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          confluence
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+NAME="confluence"
+CONFLUENCE_PATH="/opt/atlassian-confluence-<%= scope.lookupvar('confluence::params::version') %>"
+START_SCRIPT="${CONFLUENCE_PATH}/bin/start-confluence.sh"
+STOP_SCRIPT="${CONFLUENCE_PATH}/bin/stop-confluence.sh"
+PIDFILE="${CONFLUENCE_PATH}/work/catalina.pid"
+CWD=`pwd`
+
+export JVM_MINIMUM_MEMORY="<%= scope.lookupvar('confluence::minimum_memory') %>"
+export JVM_MAXIMUM_MEMORY="<%= scope.lookupvar('confluence::maximum_memory') %>"
+export CONFLUENCE_MAX_PERM_SIZE="<%= scope.lookupvar('confluence::permgen_size') %>"
+
+export JVM_OPTS="<%= scope.lookupvar('confluence::jvm_options') %>"
+export CONFLUENCE_HOME="<%= scope.lookupvar('confluence::params::home') %>"
+
+start () {
+        log_daemon_msg "Starting $NAME"
+        if start-stop-daemon --start --quiet --user confluence -d $CONFLUENCE_PATH --pidfile "$PIDFILE" --exec $START_SCRIPT; then
+                log_end_msg 0
+        else
+                log_end_msg 1
+        fi
+}
+
+stop () {
+        log_daemon_msg "Stopping $NAME"
+        if start-stop-daemon --stop --quiet --pidfile "$PIDFILE"; then
+                log_end_msg 0
+        else
+                log_end_msg 1
+        fi
+}
+
+status () {
+        status_of_proc -p $PIDFILE "" "$NAME"
+}
+
+case $1 in
+        start)
+                if status; then exit 0; fi
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        reload)
+                stop
+                sleep 2
+                start
+                ;;
+        restart)
+                stop
+                sleep 2
+                start
+                ;;
+        status)
+                status && exit 0 || exit $?
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart|reload|status}"
+                exit 1
+                ;;
+esac
+
+exit 0
