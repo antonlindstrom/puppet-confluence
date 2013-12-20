@@ -4,6 +4,8 @@ Puppet module for [Atlassian Confluence](https://www.atlassian.com/software/conf
 
 Installs a basic Confluence standalone installation in `/opt` and starts it.
 
+Note: Currently this module is not production ready.
+
 ## Example usage
 
 Include with default parameters:
