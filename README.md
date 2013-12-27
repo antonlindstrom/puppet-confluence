@@ -26,6 +26,8 @@ Set JVM options for confluence:
       jvm_options => '-Djava.net.preferIPv4Stack=true',
     }
 
+For testing, run `rake test`.
+
 ## License
 
 See [LICENSE](LICENSE) file.
