@@ -4,6 +4,8 @@ Puppet module for [Atlassian Confluence](https://www.atlassian.com/software/conf
 
 Installs a basic Confluence standalone installation in `/opt` and starts it.
 
+Note: Currently this module is not production ready.
+
 ## Example usage
 
 Include with default parameters:
@@ -23,6 +25,8 @@ Set JVM options for confluence:
     class { 'confluence':
       jvm_options => '-Djava.net.preferIPv4Stack=true',
     }
+
+For testing, run `rake test`.
 
 ## License
 
