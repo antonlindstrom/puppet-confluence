@@ -1,4 +1,4 @@
-JAVA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} ${JAVA_OPTS} ${JVM_OPTS} -Djava.awt.headless=true"
+JAVA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} -XX:PermSize=${CONFLUENCE_MAX_PERM_SIZE} -XX:MaxPermSize=${CONFLUENCE_MAX_PERM_SIZE} ${JAVA_OPTS} ${JVM_OPTS} -Djava.awt.headless=true"
 export JAVA_OPTS
 
 echo "If you encounter issues starting up Confluence Standalone, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide"
