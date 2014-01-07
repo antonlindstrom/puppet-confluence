@@ -4,7 +4,7 @@
 # It sets variables according to platform
 #
 class confluence::params {
-  $version = '5.4'
+  $version = '5.4.1'
   $home    = '/home/confluence'
 
   $permgen_size    = '384m'
