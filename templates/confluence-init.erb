@@ -13,7 +13,7 @@
 . /lib/lsb/init-functions
 
 NAME="confluence"
-CONFLUENCE_PATH="/opt/atlassian-confluence-<%= scope.lookupvar('confluence::params::version') %>"
+CONFLUENCE_PATH="/opt/atlassian-confluence-<%= scope.lookupvar('confluence::version') %>"
 START_SCRIPT="${CONFLUENCE_PATH}/bin/start-confluence.sh"
 STOP_SCRIPT="${CONFLUENCE_PATH}/bin/stop-confluence.sh"
 PIDFILE="${CONFLUENCE_PATH}/work/catalina.pid"
