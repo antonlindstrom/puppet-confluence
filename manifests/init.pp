@@ -8,6 +8,7 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class confluence (
+  $version        = $confluence::params::version,
   $minimum_memory = $confluence::params::minimum_memory,
   $maximum_memory = $confluence::params::maximum_memory,
   $permgen_size   = $confluence::params::permgen_size,
