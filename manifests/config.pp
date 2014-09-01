@@ -6,7 +6,7 @@ class confluence::config {
   include confluence::params
 
   $confluence_home    = $confluence::params::home
-  $confluence_version = $confluence::params::version
+  $confluence_version = $confluence::version
 
   user { 'confluence':
     ensure => present,

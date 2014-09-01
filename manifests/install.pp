@@ -5,7 +5,7 @@ class confluence::install {
   include wget
   include java7
 
-  $confluence_version = $confluence::params::version
+  $confluence_version = $confluence::version
 
   file { '/opt':
     ensure => directory,
